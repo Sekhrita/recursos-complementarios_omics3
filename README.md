@@ -1,5 +1,99 @@
 # recursos-complementarios_omics3
 
+## Descarga de los Datos
+
+Para comenzar con el análisis, es necesario descargar los datos desde el [GDC Data Portal](https://portal.gdc.cancer.gov). Sigue los siguientes pasos para obtener los datos `.maf` a partir del Cohort:
+
+### Obtención y uso del Cohort
+
+1. **Subir el Cohort:**
+   - Ingresa a la página del [GDC Data Portal](https://portal.gdc.cancer.gov) y selecciona la opción **Cohort Builder**.
+  
+   - Importa el archivo del directorio de `cohort_base` denominado `cohort_12_PrimaryTypeCancer.2024-11-13.tsv`.
+
+2. **Aplicar Filtros en la Sección Repository:**
+   - **Data Category:** Simple Nucleotide Variation
+
+   - **Data Format:** MAF
+  
+   - **Access:** Open
+    
+3. **Configuración de los Filtros (Opcional):**
+   - El cohort de `cohort_base` se obtuvo mediante los siguientes filtros:
+      - **Programs:** TCGA
+   
+      - **Projects:** Se seleccionan todos los disponibles.
+    
+      - **Primary Site:**
+         - Bladder
+           
+         - Brain
+         
+         - Breast
+         
+         - Bronchus and lung
+         
+         - Colon
+         
+         - Kidney
+         
+         - Liver and intrahepatic bile duct
+         
+         - Ovary
+         
+         - Pancreas
+         
+         - Prostate Gland
+         
+         - Skin
+         
+         - Stomach
+   
+   - Esto resultó en aproximadamente **7077 datos**.
+
+4. **Descarga del Manifest**
+   - Una vez aplicados los filtros, descarga el Manifest de los datos resultantes. Este archivo permite reconocer y descargar los datos mediante su UUID.
+  
+   - Se recomienda utilizar la línea de comandos para descargar grandes volúmenes de datos.
+
+### Descargar e Instalar el Cliente de GDC
+
+Herramienta de línea de comandos que permite descargar y enviar datos de GDC. Recomendada para usuarios que requieran grandes transferencias de datos de GDC o necesiten descargar un gran número de archivos de datos. Se puede obtener y utilizar de la siguiente manera (información y documentación obtenida del [GDC Data Transfer Tool](https://gdc.cancer.gov/access-data/gdc-data-transfer-tool)):
+
+1. **Descargar el Cliente de GDC** 
+   ```bash
+   wget https://gdc.cancer.gov/system/files/public/file/gdc-client_2.3_Ubuntu_x64-py3.8-ubuntu-20.04.zip
+   ```
+
+2. **Descomprimir el Archivo** 
+   ```bash
+   unzip gdc-client_2.3_Ubuntu_x64-py3.8-ubuntu-20.04.zip
+   unzip gdc-client_2.3_Ubuntu_x64.zip
+   ```
+
+3. **Hacer el Cliente Ejecutable** 
+   ```bash
+   chmod +x gdc-client
+   cp gdc-client /usr/local/bin/gdc-client
+   ```
+
+4. **Comprobar Instalación (Opcional)**
+   ```bash
+   gdc-client --version
+   ```
+   
+5. **Limpieza de Directorio (Opcional)**
+   ```bash
+   rm -r gdc-client_2.3_Ubuntu_x64-py3.8-ubuntu-20.04.zip
+   rm -r gdc-client_2.3_Ubuntu_x64.zip
+   rm -r gdc-client
+   ```
+   
+6. **Descargar los Datos** 
+   ```bash
+   gdc-client download -m /home/sekhrita/la_carpeta/omics/u3/manifest.txt -d /home/sekhrita/la_carpeta/omics/u3/data/ -n 8
+   ```
+
 ## Procesamiento Paralelizado de Archivos MAF a CSV con Rust
 
 ### Instrucciones de uso
