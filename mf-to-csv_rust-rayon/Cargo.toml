@@ -1,0 +1,13 @@
+[package]
+name = "mf-to-csv_rust-rayon"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+rayon = "1.6"  # Para paralelización
+serde = { version = "1.0", features = ["derive"] }  # Para serialización y deserialización
+serde_derive = "1.0"  # Requerido para deserialización con derive
+csv = "1.1"  # Para manejo de archivos CSV
+flate2 = "1.0"  # Para descomprimir archivos GZ
