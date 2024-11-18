@@ -177,4 +177,19 @@ Para correr este proyecto, primero necesitas instalar Rust en tu PC. Sigue los s
 
 - **Recomendación de Espacio en Disco:** El procesamiento de los archivos `.maf.gz` puede requerir una cantidad considerable de espacio en disco debido a la descompresión y generación de archivos temporales; esto dependiendo de la cantidad definida de lotes. Asegúrate de tener al menos el doble del espacio requerido por los archivos originales (`u3/data` ocupa ~11Gb) disponible antes de ejecutar el script (se recomienda tener ~22Gb).
 
-- **Condición de Carrera:** Para evitar conflictos al escribir en el archivo CSV combinado, se utiliza un mecanismo de bloqueo (`Mutex`). Esto asegura que solo un hilo pueda escribir en el archivo CSV a la vez, evitando problemas de condición de carrera (perdida de datos por conflicto entre dos procesos). 
+- **Condición de Carrera:** Para evitar conflictos al escribir en el archivo CSV combinado, se utiliza un mecanismo de bloqueo (`Mutex`). Esto asegura que solo un hilo pueda escribir en el archivo CSV a la vez, evitando problemas de condición de carrera (perdida de datos por conflicto entre dos procesos).
+
+## Cosas por modificar en el git y en el readme
+
+- Temas de carpetas
+   - Mencionar la estructura del proyecto y subirlo al repositorio.
+   
+   - Explicar que hace cada carpeta (u3/data).
+ 
+- Explicar la descarga de datos clinicos luego de los filtros, y que se añade todo al cart... etc.
+
+- Revisar estetica del readme junto a su coherencia.
+
+- Incorporar un gitignore para no subir por accidente ~1000000x10^100 Gb de datos.
+
+- Explicar con mayor detalle el script de rust.
